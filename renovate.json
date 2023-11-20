@@ -4,8 +4,7 @@
     "config:base"
   ],
   "packageRules": [{
-    "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-    "automerge": true,
+    "automerge": false,
     "matchPackagePatterns": [
       "*"
     ]
