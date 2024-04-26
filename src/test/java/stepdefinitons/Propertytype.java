@@ -1,26 +1,24 @@
 package stepdefinitons;
 
-import org.junit.runner.RunWith;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 
 import base.Base;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.junit.Cucumber;
-import pageobjects.Pom1;
+import pageobjects.Page1;
 
-@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
 
 public class Propertytype extends Base{
 
 	WebDriver driver;
 	
-	Pom1 allresidential;
+	Page1 allresidential;
 	
-	Pom1 commercial;
+	Page1 commercial;
 
 	@Before("@epic1")
 	public void setup() {
@@ -41,7 +39,7 @@ public class Propertytype extends Base{
 	@Then("^I click on the rentpg option$")
 	public void i_click_on_the_rentpg_option() {
 		
-		Pom1 page = new Pom1(driver);
+		Page1 page = new Page1(driver);
 		
 		page.rentpgtab();
 		
@@ -51,11 +49,11 @@ public class Propertytype extends Base{
 	@And("^I was able to select all residentials drop down options$")
 	public void i_was_able_to_select_all_residentials_drop_down_options() {
 		
-		allresidential = new Pom1(driver);
+		allresidential = new Page1(driver);
 
-		allresidential.allresendtialbutton();
+		allresidential.allResendtialButton();
 		
-		allresidential.allresidentialdropdown();
+		allresidential.allResidentialDropdown();
 		
 		allresidential.residentialapartmentdisplay();
 		
@@ -76,9 +74,9 @@ public class Propertytype extends Base{
 	@Then("^I should able to select commercial properties$")
 	public void i_should_able_to_select_commercial_properties() {
 
-		commercial = new Pom1(driver);
+		commercial = new Page1(driver);
 		
-		commercial.allresendtialbutton();
+		commercial.allResendtialButton();
 		
 		commercial.commercialpropertiesclick();
 		

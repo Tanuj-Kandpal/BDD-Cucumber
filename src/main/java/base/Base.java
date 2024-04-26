@@ -3,77 +3,65 @@ package base;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.opera.OperaDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 
-	public WebDriver driver;
-	public Properties prop;
+    public WebDriver driver;
+    public Properties prop;
 
-	public WebDriver initializeBrowser(String browser) {
+    /**
+     *
+     * @param browser
+     * @return WebDriver
+     */
+    public WebDriver initializeBrowser(String browser) {
 
-		if (browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome")) {
 
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+            driver = new ChromeDriver();
 
-		} else if (browser.equalsIgnoreCase("firefox")) {
+        } else if (browser.equalsIgnoreCase("firefox")) {
 
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+            driver = new FirefoxDriver();
 
-		} else if (browser.equalsIgnoreCase("ie")) {
+        } else if (browser.equalsIgnoreCase("ie")) {
 
-			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
+            driver = new InternetExplorerDriver();
 
-		} else if (browser.equalsIgnoreCase("edge")) {
+        } else if (browser.equalsIgnoreCase("edge")) {
 
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
+            driver = new EdgeDriver();
+        }
+        driver.manage().window().maximize();
+        return driver;
 
-		} else if (browser.equalsIgnoreCase("opera")) {
+    }
 
-			WebDriverManager.operadriver().setup();
-			driver = new OperaDriver();
+    public void loadProjectDataProperties() {
 
-		}
+        prop = new Properties();
 
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String projectPath = System.getProperty("user.dir");
 
-		return driver;
+        File file = new File(projectPath + "/src/main/java/resources/ProjectData.properties");
 
-	}
+        try {
 
-	public void loadProjectDataProperties() {
+            FileInputStream fis = new FileInputStream(file);
 
-		prop = new Properties();
+            prop.load(fis);
 
-		String projectPath = System.getProperty("user.dir");
+        } catch (Throwable t) {
 
-		File file = new File(projectPath + "\\src\\main\\java\\resources\\ProjectData.properties");
+            System.out.println(t.getMessage());
 
-		try {
+        }
 
-			FileInputStream fis = new FileInputStream(file);
-
-			prop.load(fis);
-
-		} catch (Throwable t) {
-
-			System.out.println(t.getMessage());
-
-		}
-
-	}
+    }
 }

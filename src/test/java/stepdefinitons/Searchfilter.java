@@ -1,31 +1,31 @@
 package stepdefinitons;
 
-import org.junit.runner.RunWith;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import base.Base;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import cucumber.api.junit.Cucumber;
-import pageobjects.Pom1;
-import pageobjects.Pom2;
-import pageobjects.Pom3;
 
-@RunWith(Cucumber.class)
+import pageobjects.Page1;
+import pageobjects.Page2;
+import pageobjects.Page3;
+
+//@RunWith(Cucumber.class)
 public class Searchfilter extends Base {
 	
-	Pom1 option;
+	Page1 option;
 	
-	Pom2 button;
+	Page2 button;
 	
-	Pom3 tab;
+	Page3 tab;
 		
 	WebDriver driver;
 
@@ -41,13 +41,13 @@ public class Searchfilter extends Base {
 	@Given("^I visited the web application$")
 	public void i_visited_the_web_application() {
 
-		option = new Pom1(driver);
+		option = new Page1(driver);
 
 		driver.get(prop.getProperty("url"));
 
 		option.rentpgtab();
 		
-		button = new Pom2(driver);
+		button = new Page2(driver);
 
 		button.searchbarclicked();
 
@@ -56,15 +56,13 @@ public class Searchfilter extends Base {
 	@When("^I search different location in the search bar under rent option$")
 	public void i_search_different_location_in_the_search_bar_under_rent_option() {
 
-		option.rentradiobutton();
+		option.rentRadioButton();
 
-		tab = new Pom3(driver);
+		tab = new Page3(driver);
 
 		tab.searchkeyword();
 		
 		tab.mumbaialloptionselected();
-
-//		driver.findElement(By.cssSelector("a[id='CITY_12, PREFERENCE_R, RESCOM_R'] strong:nth-child(1)")).click();
 
 		tab.submitbutton();
 
@@ -73,7 +71,7 @@ public class Searchfilter extends Base {
 	@When("^I Search location for the pg$")
 	public void i_search_location_for_the_pg() {
 
-		option.pgradiobutton();
+		option.pgRadioButton();
 
 		tab.searchkeyword();
 
@@ -94,7 +92,6 @@ public class Searchfilter extends Base {
 
 	@And("^filter was set as per the need$")
 	public void filter_was_set_as_per_the_need() {
-
 		
 		WebElement maxslider = driver.findElement(By.id("budgetLeftFilter_max_node"));
 
@@ -127,36 +124,8 @@ public class Searchfilter extends Base {
 		tab.newprojectsocitiesselected();
 		
 		tab.amenitiessselected();
-	
-		
-		
-//
-//		driver.findElement(By.xpath("//span[normalize-space()='2 BHK']")).click();
-//
-//		driver.findElement(By.xpath("//span[normalize-space()='Residential Apartment']")).click();
-//
-//		driver.findElement(By.cssSelector("label[for='verified_Y'] span[class='toggle__switchButton']")).click();
-//
-//		driver.findElement(By.cssSelector("label[for='media_media_PHOTO'] span[class='toggle__switchButton']")).click();
-//
-//		driver.findElement(By.cssSelector("div[id='__Owner__'] span")).click();
-//
-//		driver.findElement(By.xpath("//span[normalize-space()='Semifurnished']")).click();
-//
-//		driver.findElement(By.cssSelector("div[id='FA'] span")).click();
-//
-//		driver.findElement(By.cssSelector("label[for='1107_top']")).click();
-//
-//		driver.findElement(By.id("1-5")).click();  // age of property
-//
-//		driver.findElement(By.cssSelector("div[id='building_id'] div[class='accordion_content__fullWidth list_header_semiBold'] div")).click(); // newProjects/Societies
 
-//    driver.findElement(By.cssSelector("label[for='289759_top']")).click();
-
-		driver.findElement(By.cssSelector("div[id='area_min'] div[class='leftFilters__menu_head']")).click();// area of
-																												// the
-																												// property
-
+		driver.findElement(By.cssSelector("div[id='area_min'] div[class='leftFilters__menu_head']")).click();
 		WebElement maxareaslider = driver.findElement(By.id("area_max_node"));
 
 		WebElement minareaslider = driver.findElement(By.id("area_min_node"));
@@ -166,18 +135,10 @@ public class Searchfilter extends Base {
 		areaaction.dragAndDropBy(maxareaslider, -50, 0).perform();
 
 		areaaction.dragAndDropBy(minareaslider, 100, 0).perform();
-		
-		
+
 		tab.availablefromselected();
 		
 		tab.availablefromclicked();
-	
-
-//		driver.findElement(By.xpath("//span[normalize-space()='Parking']")).click();     ///amenities
-//
-//		driver.findElement(By.cssSelector("div[id='availableFrom'] div[class='accordion_content__fullWidth list_header_semiBold'] div[class='leftFilters__menu_head'] div span[class='section_header_semiBold']")).click();
-//
-//		driver.findElement(By.cssSelector("div[id='A'] span")).click();
 
 	}
 
@@ -239,10 +200,8 @@ public class Searchfilter extends Base {
 		driver.findElement(By.cssSelector("div[id='class'] div[class='leftFilters__menu_head']")).click();
 		
 		driver.findElement(By.cssSelector("div[id='__Owner__'] span")).click();
-		
-	
-	}
 
+	}
 	@After("@whole5")
 	public void closure() {
 

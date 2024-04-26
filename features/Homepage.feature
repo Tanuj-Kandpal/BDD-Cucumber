@@ -1,7 +1,7 @@
 Feature: Selecting and Viewing different option
 
 Background: 
-Given I visted the website
+Given I visited the website
 Then I click on the rentpg option
 
 @homepage

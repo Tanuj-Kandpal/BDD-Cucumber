@@ -1,25 +1,23 @@
 package stepdefinitons;
 
-import org.junit.runner.RunWith;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 
 import base.Base;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.junit.Cucumber;
-import pageobjects.Pom1;
-import pageobjects.Pom2;
+import pageobjects.Page1;
+import pageobjects.Page2;
 
-@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
 
 public class Rentpgoptiontype extends Base {
 	
-	Pom1 option;
+	Page1 option;
 	
-	Pom2 button;
+	Page2 button;
 	
 	WebDriver driver;
 
@@ -43,9 +41,9 @@ public class Rentpgoptiontype extends Base {
 	public void rent_option_is_selected() {
 		
 		
-		option = new Pom1(driver);
+		option = new Page1(driver);
 		
-		button = new Pom2(driver);
+		button = new Page2(driver);
 		
 		option.rentpgtab();
 		
@@ -98,15 +96,15 @@ public class Rentpgoptiontype extends Base {
 	@Given("^Pg option is available$")
 	public void pg_option_is_available() {
 
-		option = new Pom1(driver);
+		option = new Page1(driver);
 		
-		button = new Pom2(driver);
+		button = new Page2(driver);
 		
 		option.rentpgtab();
 		
 		button.searchbarclicked();
 		
-		option.pgradiobutton();
+		option.pgRadioButton();
 		
 		
 	}
