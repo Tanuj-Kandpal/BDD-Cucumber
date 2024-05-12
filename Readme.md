@@ -1,4 +1,4 @@
-# Selenium Automation Framework
+# Selenium Automation Framework - BDD cucumber
 
 ## Overview
 This repository contains a Selenium automation framework for web application testing. The framework is designed to provide a structured approach to writing and executing automated tests using Selenium WebDriver.
