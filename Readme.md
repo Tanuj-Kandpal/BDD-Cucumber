@@ -19,22 +19,32 @@ To get started with the framework, follow these steps:
 ## Usage
 Once the framework is set up and dependencies are installed, you can start writing and executing automated tests using the provided features. Here's a basic example:
 
-```python
+```JAVA
 # Example Test Scenario
-from selenium import webdriver
-from pages.login_page import LoginPage
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-# Setup
-driver = webdriver.Chrome()
-login_page = LoginPage(driver)
+public class ExampleTestScenario {
+    public static void main(String[] args) {
+        // Setup
+        WebDriver driver = new ChromeDriver();
+        LoginPage loginPage = new LoginPage(driver);
 
-# Test Scenario
-def test_successful_login():
- login_page.navigate_to_login_page()
- login_page.enter_username("username")
- login_page.enter_password("password")
- login_page.click_login_button()
- assert login_page.is_dashboard_displayed()
+        // Test Scenario
+        test_successful_login(loginPage);
+
+        // Teardown
+        driver.quit();
+    }
+
+    public static void test_successful_login(LoginPage loginPage) {
+        loginPage.navigate_to_login_page();
+        loginPage.enter_username("username");
+        loginPage.enter_password("password");
+        loginPage.click_login_button();
+        assert loginPage.is_dashboard_displayed();
+    }
+}
 
 # Teardown
 driver.quit()
